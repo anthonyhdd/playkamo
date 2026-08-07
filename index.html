@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KAMO — Hide the body so well your friends can't spot it</title>
+<meta name="description" content="Point at anything. Drop a tiny figure in. Paint it with the colours of the scene until it's gone. Then send it and watch them look. Free on iPhone.">
+<link rel="canonical" href="https://playkamo.com/">
+<meta name="theme-color" content="#05060a">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KAMO">
+<meta property="og:title" content="KAMO — Now you see him. Now you don't.">
+<meta property="og:description" content="Point, paint, vanish. Then dare your friends to find it.">
+<meta property="og:url" content="https://playkamo.com/">
+<meta property="og:image" content="https://playkamo.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KAMO — Now you see him. Now you don't.">
+<meta name="twitter:description" content="Point, paint, vanish. Then dare your friends to find it.">
+<meta name="twitter:image" content="https://playkamo.com/img/og.jpg">
+
+<meta name="apple-itunes-app" content="app-id=6789639784">
+<link rel="icon" href="./img/icon.png">
+<link rel="apple-touch-icon" href="./img/app-icon.png">
+
+<style>
+  /* The app's own type — the exact file kamo/vendor/ ships, self-hosted for the same
+     reason it is there: no third-party request on the critical path. */
+  @font-face{font-family:'Kamo'; src:url('./SpaceGrotesk-700.woff2') format('woff2'); font-weight:700; font-display:swap;}
+
+  :root{
+    /* Palette verbatim from kamo/index.html :root. */
+    --bg:#05060a; --stroke:rgba(255,255,255,.13);
+    --text:#f4f4f8; --dim:#8e97a6; --mint:#5fe6a4;
+    --font:"Avenir Next","Avenir",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    --display:'Kamo',"Avenir Next",-apple-system,sans-serif;
+    --s1:8px; --s2:14px; --s3:22px; --s4:34px;
+    --gutter:clamp(20px, 5vw, 28px);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  /* ONE SCREEN. dvh, not vh — on iOS the address bar makes vh taller than what you can
+     actually see, which is how a "no scroll" page ends up scrolling. min-height rather
+     than height so a short landscape phone can still scroll instead of clipping. */
+  body{margin:0; min-height:100dvh; display:flex; flex-direction:column;
+       background:var(--bg); color:var(--text); font-family:var(--font);
+       font-size:17px; line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  p{margin:0}
+  /* height:auto is load-bearing. The width/height ATTRIBUTES on <img> (kept so the browser
+     reserves the space and nothing jumps) arrive as presentational hints, and a concrete
+     height beats aspect-ratio — without this the icon renders 360px tall and pushes the
+     page off the one screen it is supposed to fit. */
+  img{max-width:100%; height:auto; display:block}
+
+  /* ONLY .wrap sets the horizontal gutter, and nothing that carries it may use the
+     `padding` shorthand — the shorthand resets all four sides and silently wipes the
+     gutter. Anything sharing this class sets padding-top/bottom only. */
+  .wrap{width:100%; max-width:720px; margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter)}
+
+  header{flex:none; padding-top:var(--s3); padding-bottom:var(--s3)}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:var(--s3)}
+  .brand{font-family:var(--display); font-weight:700; letter-spacing:-.6px; font-size:20px; color:#fff}
+
+  main{flex:1; display:flex; align-items:center; position:relative}
+  main::before{content:""; position:absolute; inset:0; pointer-events:none;
+    background:radial-gradient(44% 48% at 50% 40%, rgba(95,230,164,.16), transparent 70%)}
+  .stage{position:relative; text-align:center; padding-top:var(--s4); padding-bottom:var(--s4)}
+
+  /* The real app icon. Its own background is #05080e — near enough to the page ground that
+     the squircle reads as the icon rather than as a pasted tile; the hairline keeps the
+     edge from dissolving entirely. 22.4% is Apple's corner ratio. */
+  .appicon{display:block; width:clamp(84px,11vw,112px); aspect-ratio:1; margin:0 auto var(--s3);
+           border-radius:22.4%; border:1px solid var(--stroke);
+           box-shadow:0 0 34px rgba(95,230,164,.28), 0 12px 28px rgba(0,0,0,.55);
+           animation:bob 4.5s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+  .logo{font-family:var(--display); font-weight:700; letter-spacing:-1.6px;
+        font-size:clamp(52px,11vw,92px); line-height:1; margin:0 0 var(--s3); color:#fff}
+  /* 24ch keeps this to two even lines — at 18 it broke into three and left "it" alone. */
+  h1{font-family:var(--display); font-weight:700; letter-spacing:-.8px;
+     font-size:clamp(26px,4.6vw,40px); line-height:1.14; margin:0 auto var(--s3);
+     max-width:24ch; text-wrap:balance}
+  h1 span{color:var(--mint)}
+  .sub{color:var(--dim); max-width:46ch; margin:0 auto var(--s4); font-size:clamp(16px,2vw,18px)}
+
+  /* The app's primary button: white, dark ink, breathing glow. Mint is the accent, never
+     the button — same rule as heroCta / pwBuy in the app. */
+  .cta{position:relative; overflow:hidden;
+       display:inline-flex; align-items:center; justify-content:center; gap:9px; height:56px; padding:0 32px;
+       font-family:var(--display); font-weight:700; font-size:18px; letter-spacing:-.3px;
+       color:#0a0b0e; background:#fff; border:none; border-radius:15px; text-decoration:none;
+       box-shadow:0 8px 24px rgba(0,0,0,.4); animation:glow 3s ease-in-out infinite}
+  /* The app's own buy-button treatment: a breathing mint halo plus a slow glossy sheen
+     crossing the white face (pwBuyGlow + the ::after sweep in kamo/index.html). The sheen
+     is what makes it read as pressable rather than as a static block. */
+  .cta::after{content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(100deg,transparent 42%,rgba(95,230,164,.30) 49%,rgba(95,230,164,.42) 51%,transparent 58%);
+    background-size:300% 100%; animation:sheen 3.4s linear infinite}
+  @keyframes sheen{from{background-position:130% 0}to{background-position:-130% 0}}
+  .cta:hover{transform:translateY(-1px)}
+  .cta:focus-visible{outline:3px solid var(--mint); outline-offset:3px}
+  .cta svg{width:18px; height:18px; flex:none}
+  .cta.sm{height:42px; padding:0 var(--s3); font-size:14.5px; border-radius:11px; animation:none}
+  .cta.sm svg{width:15px; height:15px}
+  .cta.sm::after{animation:none; background:none}
+  @keyframes glow{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.4), 0 0 0 0 rgba(95,230,164,0)}
+                  50%{box-shadow:0 8px 24px rgba(0,0,0,.4), 0 0 34px 2px rgba(95,230,164,.34)}}
+  .fine{margin-top:var(--s3); font-size:14px; color:#6a7484}
+
+  footer{flex:none; border-top:1px solid var(--stroke);
+         padding-top:var(--s2); padding-bottom:var(--s2); color:#66707f; font-size:13px}
+  .foot{display:flex; flex-wrap:wrap; gap:var(--s1) var(--s3); align-items:center; justify-content:space-between}
+  .foot nav{display:flex; flex-wrap:wrap; gap:var(--s3)}
+  .foot a{color:inherit; text-decoration:none}
+  .foot a:hover{color:var(--text)}
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <span class="brand">KAMO</span>
+    <a class="cta sm" href="https://apps.apple.com/app/id6789639784">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6zM14.2 5.9c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+      Download on the App Store
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap stage">
+    <img class="appicon" src="./img/app-icon.png" width="360" height="360" alt="KAMO app icon" fetchpriority="high">
+
+    <p class="logo">KAMO</p>
+    <h1>Hide the body so well your friends <span>can't spot it</span></h1>
+    <p class="sub">Point, paint, vanish. Then dare your friends to find it.</p>
+    <a class="cta" href="https://apps.apple.com/app/id6789639784">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6zM14.2 5.9c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+      Start playing
+    </a>
+    <p class="fine">Free on iPhone</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Bliss Coach</span>
+    <nav>
+      <a href="https://anthonyhdd.github.io/kamo/privacy.html">Privacy</a>
+      <a href="https://anthonyhdd.github.io/kamo/terms.html">Terms</a>
+      <a href="mailto:anthony@blisscoach.app">Support</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication",
+"name":"KAMO: Hide & Seek Photo Game","operatingSystem":"iOS","applicationCategory":"GameApplication",
+"url":"https://playkamo.com/","downloadUrl":"https://apps.apple.com/app/id6789639784",
+"description":"Place a tiny figure into a real photo, paint it with the colours of the scene until it vanishes, then challenge friends to find it.",
+"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
+"publisher":{"@type":"Organization","name":"Bliss Coach","url":"https://bliss-coach.com/"}}
+</script>
+</body>
+</html>
