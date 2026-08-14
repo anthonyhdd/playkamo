@@ -3,19 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>KAMO — Hide the body so well your friends can't spot it</title>
-<meta name="description" content="Point at anything. Drop a tiny figure in. Paint it with the colours of the scene until it's gone. Then send it and watch them look. Free on iPhone.">
+<!-- SEO note: nobody searches "KAMO" and means us — the word is a Paris restaurant, a French
+     furniture brand and a CCleaner feature. So the <title> carries the words people actually
+     type ("hide and seek photo game", "camouflage", "app") and the brand rides along; the
+     bare head term is not winnable and its traffic is not ours anyway. -->
+<title>KAMO — the hide-and-seek photo game. Camouflage a kamo, dare your friends to spot it</title>
+<meta name="description" content="KAMO is a hide-and-seek game for your camera. Drop a tiny kamo into a real photo, paint it with the colours of the scene until it vanishes, then challenge your friends to spot it. Free on iPhone.">
 <link rel="canonical" href="https://playkamo.com/">
 <meta name="theme-color" content="#05060a">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="KAMO">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="KAMO — Now you see him. Now you don't.">
 <meta property="og:description" content="Point, paint, vanish. Then dare your friends to find it.">
 <meta property="og:url" content="https://playkamo.com/">
 <meta property="og:image" content="https://playkamo.com/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A kamo painted into a real photo until it disappears">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="KAMO — Now you see him. Now you don't.">
 <meta name="twitter:description" content="Point, paint, vanish. Then dare your friends to find it.">
@@ -36,35 +42,36 @@
     --text:#f4f4f8; --dim:#8e97a6; --mint:#5fe6a4;
     --font:"Avenir Next","Avenir",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
     --display:'Kamo',"Avenir Next",-apple-system,sans-serif;
-    --s1:8px; --s2:14px; --s3:22px; --s4:34px;
+    --s1:8px; --s2:14px; --s3:22px; --s4:34px; --s5:64px;
     --gutter:clamp(20px, 5vw, 28px);
   }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  /* ONE SCREEN. dvh, not vh — on iOS the address bar makes vh taller than what you can
-     actually see, which is how a "no scroll" page ends up scrolling. min-height rather
-     than height so a short landscape phone can still scroll instead of clipping. */
-  body{margin:0; min-height:100dvh; display:flex; flex-direction:column;
-       background:var(--bg); color:var(--text); font-family:var(--font);
+  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font);
        font-size:17px; line-height:1.5; -webkit-font-smoothing:antialiased; overflow-x:hidden}
   p{margin:0}
   /* height:auto is load-bearing. The width/height ATTRIBUTES on <img> (kept so the browser
      reserves the space and nothing jumps) arrive as presentational hints, and a concrete
      height beats aspect-ratio — without this the icon renders 360px tall and pushes the
-     page off the one screen it is supposed to fit. */
+     hero off the one screen it is supposed to fill. */
   img{max-width:100%; height:auto; display:block}
+  a{color:var(--mint)}
 
   /* ONLY .wrap sets the horizontal gutter, and nothing that carries it may use the
      `padding` shorthand — the shorthand resets all four sides and silently wipes the
      gutter. Anything sharing this class sets padding-top/bottom only. */
   .wrap{width:100%; max-width:720px; margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter)}
 
-  header{flex:none; padding-top:var(--s3); padding-bottom:var(--s3)}
+  header{padding-top:var(--s3); padding-bottom:var(--s3)}
   .nav{display:flex; align-items:center; justify-content:space-between; gap:var(--s3)}
   .brand{font-family:var(--display); font-weight:700; letter-spacing:-.6px; font-size:20px; color:#fff}
 
-  main{flex:1; display:flex; align-items:center; position:relative}
-  main::before{content:""; position:absolute; inset:0; pointer-events:none;
+  /* THE HERO STILL OWNS THE FIRST SCREEN. dvh, not vh — on iOS the address bar makes vh
+     taller than what you can actually see. The 96px is the header; min-height (not height)
+     so a short landscape phone scrolls instead of clipping. Everything below the hero is
+     what Google reads: a page with sixty words on it cannot rank for anything. */
+  .hero{min-height:calc(100dvh - 96px); display:flex; align-items:center; position:relative}
+  .hero::before{content:""; position:absolute; inset:0; pointer-events:none;
     background:radial-gradient(44% 48% at 50% 40%, rgba(95,230,164,.16), transparent 70%)}
   .stage{position:relative; text-align:center; padding-top:var(--s4); padding-bottom:var(--s4)}
 
@@ -109,14 +116,44 @@
   @keyframes glow{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.4), 0 0 0 0 rgba(95,230,164,0)}
                   50%{box-shadow:0 8px 24px rgba(0,0,0,.4), 0 0 34px 2px rgba(95,230,164,.34)}}
   .fine{margin-top:var(--s3); font-size:14px; color:#6a7484}
+  /* A hint that there IS something under the fold — without it a full-bleed hero reads as
+     the whole document and the content below never gets seen by a human. */
+  .more{display:inline-block; margin-top:var(--s4); color:#66707f; font-size:13px;
+        text-decoration:none; letter-spacing:.4px}
+  .more:hover{color:var(--text)}
+  .more::after{content:" ↓"}
 
-  footer{flex:none; border-top:1px solid var(--stroke);
+  section.band{padding-top:var(--s5); padding-bottom:var(--s5); border-top:1px solid var(--stroke)}
+  h2{font-family:var(--display); font-weight:700; letter-spacing:-.5px;
+     font-size:clamp(23px,3.4vw,30px); line-height:1.2; margin:0 0 var(--s3)}
+  h3{font-family:var(--display); font-weight:700; font-size:18px; margin:0 0 var(--s1)}
+  .band p{color:var(--dim); max-width:62ch}
+  .band p + p{margin-top:var(--s2)}
+  .band strong{color:var(--text); font-weight:600}
+
+  .steps{list-style:none; counter-reset:step; margin:var(--s4) 0 0; padding:0;
+         display:grid; gap:var(--s3)}
+  .steps li{counter-increment:step; position:relative; padding-left:52px}
+  .steps li::before{content:counter(step); position:absolute; left:0; top:-2px;
+    width:34px; height:34px; border-radius:11px; border:1px solid var(--stroke);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:700; font-size:15px; color:var(--mint);
+    background:rgba(95,230,164,.07)}
+  .steps p{margin-top:2px}
+
+  .faq{margin-top:var(--s4); display:grid; gap:var(--s3)}
+  .faq h3{margin-bottom:4px}
+
+  .endcta{text-align:center}
+  .endcta .cta{margin-top:var(--s3)}
+
+  footer{border-top:1px solid var(--stroke);
          padding-top:var(--s2); padding-bottom:var(--s2); color:#66707f; font-size:13px}
   .foot{display:flex; flex-wrap:wrap; gap:var(--s1) var(--s3); align-items:center; justify-content:space-between}
   .foot nav{display:flex; flex-wrap:wrap; gap:var(--s3)}
   .foot a{color:inherit; text-decoration:none}
   .foot a:hover{color:var(--text)}
-  @media (prefers-reduced-motion:reduce){ *{animation:none !important} }
+  @media (prefers-reduced-motion:reduce){ *{animation:none !important} html{scroll-behavior:auto} }
 </style>
 </head>
 <body>
@@ -132,24 +169,122 @@
 </header>
 
 <main>
-  <div class="wrap stage">
-    <img class="appicon" src="./img/app-icon.png" width="360" height="360" alt="KAMO app icon" fetchpriority="high">
+  <div class="hero">
+    <div class="wrap stage">
+      <img class="appicon" src="./img/app-icon.png" width="360" height="360" alt="KAMO app icon" fetchpriority="high">
 
-    <p class="logo">KAMO</p>
-    <h1>Hide the body so well your friends <span>can't spot it</span></h1>
-    <p class="sub">Point, paint, vanish. Then dare your friends to find it.</p>
-    <a class="cta" href="https://apps.apple.com/app/id6789639784">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6zM14.2 5.9c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
-      Start playing
-    </a>
-    <p class="fine">Free on iPhone</p>
+      <p class="logo">KAMO</p>
+      <h1>Hide a kamo so well your friends <span>can't spot it</span></h1>
+      <p class="sub">Point, paint, vanish. Then dare your friends to find it.</p>
+      <a class="cta" href="https://apps.apple.com/app/id6789639784">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6zM14.2 5.9c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+        Start playing
+      </a>
+      <p class="fine">Free on iPhone</p>
+      <a class="more" href="#what">How it works</a>
+    </div>
   </div>
+
+  <section class="band" id="what">
+    <div class="wrap">
+      <h2>What is KAMO?</h2>
+      <p>KAMO is a <strong>hide-and-seek game played through your camera</strong>. You point your
+      phone at anything in front of you — a desk, a wall, a pavement, the middle of the street —
+      and drop in a <strong>kamo</strong>: a tiny figure that starts out obvious.</p>
+      <p>Then you paint it. With your finger, straight onto the live world, you colour the kamo
+      until it takes on whatever is behind it. Get it right and it disappears into the photo.
+      Get it wrong and it sticks out like a sore thumb. A score tells you how well you actually
+      blended in.</p>
+      <p>The part people replay is the reveal: KAMO plays back the scene the way everyone else
+      sees it, then wipes across to show exactly where your kamo was hiding. That before/after
+      clip is what you send to a friend — or post — and it is the whole game in six seconds.</p>
+    </div>
+  </section>
+
+  <section class="band" id="how">
+    <div class="wrap">
+      <h2>How to play</h2>
+      <ol class="steps">
+        <li><h3>Point at anything</h3><p>Open the camera on any surface with texture — brick, wood grain, a rug, gravel. Busy beats plain.</p></li>
+        <li><h3>Drop a kamo in</h3><p>Place the figure where you want it hidden. Corners, edges and shadows are where a kamo disappears best.</p></li>
+        <li><h3>Paint it until it's gone</h3><p>Pick up the colours around it and paint them onto the figure. When your eye can no longer find it, neither can theirs.</p></li>
+        <li><h3>Send the hide</h3><p>Share the shot and let them hunt. The reveal only plays once they've given up — or found it.</p></li>
+      </ol>
+      <p style="margin-top:var(--s4)">Hides you mark <strong>Public</strong> land in the KAMO feed,
+      where strangers try to spot them too. You choose public or private before you share, and you
+      can change it any time.</p>
+    </div>
+  </section>
+
+  <section class="band" id="meccha">
+    <div class="wrap">
+      <h2>Meccha Chameleon, but in your camera</h2>
+      <p>If you've seen the <strong>Meccha Chameleon</strong> clips — a little chameleon figure
+      painted to match the surface it's standing on, then filmed until nobody can find it — KAMO is
+      that game without the paint, the figure, or the drying time.</p>
+      <p>Same instinct, same payoff: the satisfaction of something vanishing in plain sight, and
+      the small cruelty of handing it to a friend and saying <em>find it</em>. The difference is
+      that a kamo takes about a minute, costs nothing, and lives in your camera roll instead of
+      your desk.</p>
+      <p><a href="/how-to-hide-a-kamo/">Read the guide to hiding a kamo nobody finds →</a></p>
+    </div>
+  </section>
+
+  <section class="band" id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+        <div>
+          <h3>Is KAMO free?</h3>
+          <p>Yes. The game is free to download and play, with no signup — open it and you're in.
+          KAMO+ is an optional upgrade that unlocks every brush size, the full colour palette, more
+          time to paint each round, and exports without the KAMO watermark.</p>
+        </div>
+        <div>
+          <h3>What does KAMO+ cost?</h3>
+          <p>KAMO+ Weekly is an auto-renewable subscription at $2.99 per week, and KAMO Lifetime is
+          a one-time purchase. Prices vary by region and the exact price is always shown in the app
+          before you buy.</p>
+        </div>
+        <div>
+          <h3>Which phones does it run on?</h3>
+          <p>iPhone, iOS 15.1 or later. There is no Android version yet.</p>
+        </div>
+        <div>
+          <h3>Do I need special hardware — LiDAR, AR kit, a new phone?</h3>
+          <p>No. KAMO uses the ordinary camera. If your phone can take a photo, it can hide a kamo.</p>
+        </div>
+        <div>
+          <h3>How is the score calculated?</h3>
+          <p>It compares the colours you painted onto the kamo with the colours immediately around
+          it. The closer the match — and the more of the figure you cover — the higher the score.</p>
+        </div>
+        <div>
+          <h3>Can I send a hide to someone who doesn't have the app?</h3>
+          <p>Yes. Every hide gets a link that opens in any browser, so they can hunt for the kamo
+          before they ever install anything.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band endcta">
+    <div class="wrap">
+      <h2>Now you see him. Now you don't.</h2>
+      <p style="margin:0 auto">Free on iPhone. No signup.</p>
+      <a class="cta" href="https://apps.apple.com/app/id6789639784">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6zM14.2 5.9c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+        Get KAMO
+      </a>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap foot">
     <span>© 2026 Bliss Coach</span>
     <nav>
+      <a href="/how-to-hide-a-kamo/">Guide</a>
       <a href="https://anthonyhdd.github.io/kamo/privacy.html">Privacy</a>
       <a href="https://anthonyhdd.github.io/kamo/terms.html">Terms</a>
       <a href="mailto:anthony@blisscoach.app">Support</a>
@@ -159,11 +294,22 @@
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication",
-"name":"KAMO: Hide & Seek Photo Game","operatingSystem":"iOS","applicationCategory":"GameApplication",
+"name":"KAMO - Chameleon Hide & Seek","alternateName":"KAMO",
+"operatingSystem":"iOS 15.1 or later","applicationCategory":"GameApplication",
 "url":"https://playkamo.com/","downloadUrl":"https://apps.apple.com/app/id6789639784",
-"description":"Place a tiny figure into a real photo, paint it with the colours of the scene until it vanishes, then challenge friends to find it.",
+"description":"Place a tiny kamo into a real photo, paint it with the colours of the scene until it vanishes, then challenge friends to find it.",
+"sameAs":["https://apps.apple.com/app/id6789639784"],
 "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
 "publisher":{"@type":"Organization","name":"Bliss Coach","url":"https://bliss-coach.com/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","url":"https://playkamo.com/","mainEntity":[
+{"@type":"Question","name":"Is KAMO free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The game is free to download and play, with no signup. KAMO+ is an optional upgrade that unlocks every brush size, the full colour palette, more time to paint each round, and exports without the KAMO watermark."}},
+{"@type":"Question","name":"What does KAMO+ cost?","acceptedAnswer":{"@type":"Answer","text":"KAMO+ Weekly is an auto-renewable subscription at $2.99 per week, and KAMO Lifetime is a one-time purchase. Prices vary by region and the exact price is always shown in the app before you buy."}},
+{"@type":"Question","name":"Which phones does KAMO run on?","acceptedAnswer":{"@type":"Answer","text":"iPhone, iOS 15.1 or later. There is no Android version yet."}},
+{"@type":"Question","name":"Do I need LiDAR or AR hardware to play KAMO?","acceptedAnswer":{"@type":"Answer","text":"No. KAMO uses the ordinary camera. If your phone can take a photo, it can hide a kamo."}},
+{"@type":"Question","name":"How is the KAMO score calculated?","acceptedAnswer":{"@type":"Answer","text":"It compares the colours you painted onto the kamo with the colours immediately around it. The closer the match, and the more of the figure you cover, the higher the score."}},
+{"@type":"Question","name":"Can I send a hide to someone who doesn't have the app?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every hide gets a link that opens in any browser, so they can hunt for the kamo before they install anything."}}]}
 </script>
 </body>
 </html>

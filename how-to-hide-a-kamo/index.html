@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>How to hide a kamo nobody finds — camouflage tricks that actually work</title>
+<meta name="description" content="Where to place a kamo, which surfaces swallow it, and the painting mistakes that give it away every time. A practical guide to camouflaging a kamo in the KAMO hide-and-seek photo game.">
+<link rel="canonical" href="https://playkamo.com/how-to-hide-a-kamo/">
+<meta name="theme-color" content="#05060a">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="KAMO">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="How to hide a kamo nobody finds">
+<meta property="og:description" content="Where to place it, which surfaces swallow it, and the painting mistakes that give it away every time.">
+<meta property="og:url" content="https://playkamo.com/how-to-hide-a-kamo/">
+<meta property="og:image" content="https://playkamo.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to hide a kamo nobody finds">
+<meta name="twitter:description" content="Where to place it, which surfaces swallow it, and the painting mistakes that give it away every time.">
+<meta name="twitter:image" content="https://playkamo.com/img/og.jpg">
+
+<meta name="apple-itunes-app" content="app-id=6789639784">
+<link rel="icon" href="/img/icon.png">
+<link rel="apple-touch-icon" href="/img/app-icon.png">
+
+<style>
+  @font-face{font-family:'Kamo'; src:url('/SpaceGrotesk-700.woff2') format('woff2'); font-weight:700; font-display:swap;}
+  :root{
+    --bg:#05060a; --stroke:rgba(255,255,255,.13);
+    --text:#f4f4f8; --dim:#8e97a6; --mint:#5fe6a4;
+    --font:"Avenir Next","Avenir",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    --display:'Kamo',"Avenir Next",-apple-system,sans-serif;
+    --s1:8px; --s2:14px; --s3:22px; --s4:34px; --s5:56px;
+    --gutter:clamp(20px, 5vw, 28px);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--font);
+       font-size:17px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden}
+  p{margin:0 0 var(--s2)}
+  img{max-width:100%; height:auto; display:block}
+  a{color:var(--mint)}
+  .wrap{width:100%; max-width:720px; margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter)}
+
+  header{padding-top:var(--s3); padding-bottom:var(--s3); border-bottom:1px solid var(--stroke)}
+  .nav{display:flex; align-items:center; justify-content:space-between; gap:var(--s3)}
+  .brand{font-family:var(--display); font-weight:700; letter-spacing:-.6px; font-size:20px;
+         color:#fff; text-decoration:none}
+
+  .cta{position:relative; display:inline-flex; align-items:center; justify-content:center; gap:9px;
+       height:56px; padding:0 32px; font-family:var(--display); font-weight:700; font-size:18px;
+       letter-spacing:-.3px; color:#0a0b0e; background:#fff; border:none; border-radius:15px;
+       text-decoration:none; box-shadow:0 8px 24px rgba(0,0,0,.4)}
+  .cta:hover{transform:translateY(-1px)}
+  .cta:focus-visible{outline:3px solid var(--mint); outline-offset:3px}
+  .cta svg{width:18px; height:18px; flex:none}
+  .cta.sm{height:42px; padding:0 var(--s3); font-size:14.5px; border-radius:11px}
+  .cta.sm svg{width:15px; height:15px}
+
+  article{padding-top:var(--s5); padding-bottom:var(--s5)}
+  h1{font-family:var(--display); font-weight:700; letter-spacing:-.8px;
+     font-size:clamp(30px,5vw,44px); line-height:1.12; margin:0 0 var(--s3); text-wrap:balance}
+  .standfirst{color:var(--dim); font-size:clamp(17px,2.2vw,19px); margin-bottom:var(--s5)}
+  h2{font-family:var(--display); font-weight:700; letter-spacing:-.5px;
+     font-size:clamp(22px,3.2vw,28px); line-height:1.2; margin:var(--s5) 0 var(--s3)}
+  h3{font-family:var(--display); font-weight:700; font-size:19px; margin:var(--s4) 0 var(--s1)}
+  article p{color:var(--dim)}
+  article strong{color:var(--text); font-weight:600}
+  ul{color:var(--dim); padding-left:20px; margin:0 0 var(--s2)}
+  li{margin-bottom:6px}
+  .rule{border:none; border-top:1px solid var(--stroke); margin:var(--s5) 0}
+  .endcta{text-align:center; padding-bottom:var(--s5)}
+  .endcta p{margin-bottom:var(--s3)}
+
+  footer{border-top:1px solid var(--stroke);
+         padding-top:var(--s2); padding-bottom:var(--s2); color:#66707f; font-size:13px}
+  .foot{display:flex; flex-wrap:wrap; gap:var(--s1) var(--s3); align-items:center; justify-content:space-between}
+  .foot nav{display:flex; flex-wrap:wrap; gap:var(--s3)}
+  .foot a{color:inherit; text-decoration:none}
+  .foot a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">KAMO</a>
+    <a class="cta sm" href="https://apps.apple.com/app/id6789639784">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6zM14.2 5.9c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+      Get KAMO
+    </a>
+  </div>
+</header>
+
+<main>
+<article class="wrap">
+  <h1>How to hide a kamo nobody finds</h1>
+  <p class="standfirst">Most hides get spotted in under three seconds, and almost always for the
+  same handful of reasons. Here is what actually makes a kamo disappear — where to put it, what to
+  point at, and the painting habits that give you away.</p>
+
+  <h2>Pick the surface before you pick the spot</h2>
+  <p>The single biggest factor is <strong>what’s behind the kamo</strong>, and you choose it before
+  you place anything. A flat, evenly-lit wall is the hardest surface in the game: any colour you
+  paint is either exactly right or obviously wrong, and the eye finds “obviously wrong” instantly.</p>
+  <p>What swallows a kamo is <strong>visual noise</strong> — surfaces where the eye is already
+  losing track of edges:</p>
+  <ul>
+    <li>Gravel, bark, moss, dry leaves</li>
+    <li>Patterned rugs, tweed, knitted blankets</li>
+    <li>Brick, concrete with staining, rusted metal</li>
+    <li>Bookshelves, cluttered desks, tangled cables</li>
+    <li>Dappled light under a tree</li>
+  </ul>
+  <p>On a busy surface, a rough paint job reads as more texture. On a plain surface, a perfect paint
+  job still reads as a shape.</p>
+
+  <h2>Break the silhouette, not just the colour</h2>
+  <p>People do not find your kamo by noticing the wrong shade of brown. They find it by noticing
+  <strong>an outline</strong>. A kamo standing in open space with three inches of clearance around
+  it is visible even when the colour match is perfect, because the human eye is a shape detector
+  first and a colour detector second.</p>
+  <p>So put it where an edge already exists and let the two edges collide: against a skirting board,
+  half behind a plant pot, in the seam between two paving slabs, in the corner where a wall meets a
+  shelf. If part of the kamo's outline is interrupted by something real, the rest stops reading as
+  a figure.</p>
+
+  <h3>The shadow rule</h3>
+  <p>Shadows cut both ways. A kamo <em>in</em> a shadow is easy: everything there is dark and
+  low-contrast, so the match is forgiving. A kamo <em>casting</em> an obvious shadow — or painted
+  in bright shades while sitting in shade — is the most common giveaway there is. Match the light
+  level before you match the hue.</p>
+
+  <h2>Paint the surroundings, not the figure</h2>
+  <p>The instinct is to look at the kamo and decide what colour it should be. The better instinct
+  is to look at the square inch of world it is standing on and copy that, patch by patch, onto
+  whichever part of the figure is in front of it.</p>
+  <p>That means <strong>a kamo is rarely one colour</strong>. If its head is against a dark plank
+  and its feet are against pale grout, painting the whole thing mid-grey gives you a mid-grey
+  figure on a two-tone background — which is worse than either. Split it.</p>
+
+  <h3>Cover the whole thing</h3>
+  <p>A missed patch is worth more to a seeker than any amount of good work elsewhere. Unpainted
+  areas keep their original colour, and that colour is designed to be visible. Rotate the view
+  before you send: the bit you never painted is usually the bit you never looked at.</p>
+
+  <h2>Zoom out before you're happy</h2>
+  <p>Everything looks hidden at arm's length on your own screen, because you know where it is.
+  The test that matters is the one the seeker takes: pull back so the kamo is a small part of a
+  wider frame, then look for the thing that draws your eye first. If it's still your kamo, it isn't
+  hidden — it's just painted.</p>
+  <p>Two more checks worth doing before you send a hide:</p>
+  <ul>
+    <li><strong>Squint.</strong> Blurring the detail collapses the image to blocks of value. A hidden kamo disappears when you squint; a visible one becomes a dot.</li>
+    <li><strong>Wait a beat.</strong> Look away, look back. Your eye returns to the anomaly first.</li>
+  </ul>
+
+  <h2>Make it findable — eventually</h2>
+  <p>A hide nobody can ever find isn't fun, it's just a photo. The hides people actually enjoy are
+  the ones where the answer is <em>there</em>, in the frame, at a reasonable size, and the reveal
+  makes them say "it was right there". Hiding a kamo three pixels wide behind a table leg wins the
+  round and loses the game.</p>
+  <p>The best ones sit in the middle: findable in about twenty seconds of real looking, with a
+  reveal that feels like a trick rather than a technicality.</p>
+
+  <h2>Where the game came from</h2>
+  <p>If you arrived here from the <strong>Meccha Chameleon</strong> clips — a chameleon figure
+  hand-painted to match the surface it stands on, then filmed until nobody can spot it — the
+  instincts transfer exactly. Surface choice, silhouette, shadow, and the pull-back test are the
+  same skills. KAMO just removes the paint, the figure and the drying time, so a hide takes about a
+  minute instead of an evening.</p>
+
+  <hr class="rule">
+
+  <div class="endcta">
+    <p>Free on iPhone. No signup.</p>
+    <a class="cta" href="https://apps.apple.com/app/id6789639784">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.8c-1.5 0-2.9.9-3.7 2.2-1.6 2.8-.4 6.9 1.1 9.1.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.5-1-2.5-3.6zM14.2 5.9c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+      Get KAMO
+    </a>
+  </div>
+</article>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Bliss Coach</span>
+    <nav>
+      <a href="/">Home</a>
+      <a href="https://anthonyhdd.github.io/kamo/privacy.html">Privacy</a>
+      <a href="https://anthonyhdd.github.io/kamo/terms.html">Terms</a>
+      <a href="mailto:anthony@blisscoach.app">Support</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HowTo",
+"name":"How to hide a kamo nobody finds",
+"description":"Where to place a kamo, which surfaces swallow it, and the painting mistakes that give it away.",
+"url":"https://playkamo.com/how-to-hide-a-kamo/",
+"totalTime":"PT2M",
+"step":[
+{"@type":"HowToStep","name":"Pick a noisy surface","text":"Choose gravel, bark, patterned fabric, brick or clutter over a flat evenly-lit wall. Visual noise hides a rough paint job; a plain wall exposes a perfect one."},
+{"@type":"HowToStep","name":"Break the silhouette","text":"Place the kamo against an existing edge — a skirting board, a plant pot, a seam between paving slabs — so its outline is interrupted and stops reading as a figure."},
+{"@type":"HowToStep","name":"Match the light before the hue","text":"Keep the kamo's brightness consistent with the light where it stands. A bright figure sitting in shade is the most common giveaway."},
+{"@type":"HowToStep","name":"Paint the surroundings onto the figure","text":"Copy the colours immediately behind each part of the kamo rather than picking one average colour, and cover every patch — unpainted areas keep their visible original colour."},
+{"@type":"HowToStep","name":"Zoom out and squint","text":"Pull back to a wide frame and squint. If your kamo is still the first thing your eye lands on, it is painted, not hidden."}
+]}
+</script>
+</body>
+</html>
