@@ -41,6 +41,7 @@ const HAND_WRITTEN = [
   { loc: '/', priority: '1.0', changefreq: 'weekly' },
   { loc: '/how-to-hide-a-kamo/', priority: '0.8', changefreq: 'monthly' },
   { loc: '/meccha-chameleon-app/', priority: '0.8', changefreq: 'monthly' },
+  { loc: '/press/', priority: '0.6', changefreq: 'monthly' },
   { loc: '/support/', priority: '0.5', changefreq: 'monthly' },
   { loc: '/privacy/', priority: '0.3', changefreq: 'yearly' },
   { loc: '/terms/', priority: '0.3', changefreq: 'yearly' },
@@ -184,6 +185,7 @@ ${body}
       <a href="/hides/">Hides</a>
       <a href="/games/">Games</a>
       <a href="/ideas/">Ideas</a>
+      <a href="/press/">Press</a>
       <a href="/support/">Support</a>
       <a href="/privacy/">Privacy</a>
       <a href="/terms/">Terms</a>
