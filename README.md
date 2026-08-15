@@ -56,3 +56,20 @@ Then Settings → Pages → Custom domain → `playkamo.com` → wait for the ce
 
 Desktop 1280×860 and mobile 375×812: fits one screen exactly, no scroll, no horizontal
 overflow, correct 20px gutters, no console errors, zero JS. 144 KB total.
+
+## Content pages
+
+`content/*.mjs` holds the page data; `node build.mjs` renders it into the committed
+directories and regenerates `sitemap.xml`. GitHub Pages runs no build, so **the output is
+committed** — after editing content, run the build and commit what it writes.
+
+    node build.mjs          # render
+    node build.mjs --check  # fail if the committed tree is stale
+
+The build refuses a page under 180 words of body copy. That threshold is the point: this is
+a content site, not a doorway-page generator, and a page that cannot justify its own
+paragraphs should be deleted rather than padded.
+
+`/`, `/how-to-hide-a-kamo/`, `/meccha-chameleon-app/`, `/privacy/`, `/terms/` and
+`/support/` are hand-written and untouched by the build; they appear in `HAND_WRITTEN` in
+`build.mjs` only so the sitemap stays complete.
