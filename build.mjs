@@ -49,10 +49,14 @@ const HAND_WRITTEN = [
 const HUBS = [
   {
     slug: 'hides',
-    title: 'Where to hide a kamo — a guide per surface',
+    // Named for what people type, not for what we call it. "Hide a kamo" is a phrase with a
+    // search volume of zero — kamo is a word we coined — so it belongs in the body copy,
+    // where it builds the brand noun, and nowhere near a title or an H1.
+    title: 'Where to hide something in plain sight — a guide for every surface',
     description:
-      'Brick, gravel, carpet, bark, snow, a cluttered desk: each surface hides a kamo differently. One short guide for each, with the mistake that gives it away.',
-    h1: 'Where to hide a kamo',
+      'Brick, gravel, carpet, bark, snow, a cluttered desk: each surface camouflages an object differently. One short guide for each, with the mistake that gives it away.',
+    h1: 'Where to hide something in plain sight',
+    linkAll: 'Every surface guide',
     standfirst:
       'The surface decides the round before you place anything. These are the ones people actually point at, and what each one does to a hide.',
     items: surfaces,
@@ -65,6 +69,7 @@ const HUBS = [
     description:
       'Straight answers on camouflage apps, phone hide-and-seek, AR camera games and hidden-object puzzles: what exists, what doesn’t, and where KAMO fits.',
     h1: 'Camera games, honestly compared',
+    linkAll: 'All the comparisons',
     standfirst:
       'What people search for around this game, answered without pretending KAMO is the answer to all of it.',
     items: intent,
@@ -77,6 +82,7 @@ const HUBS = [
     description:
       'Ideas for using a camera hide-and-seek game: with friends in a group chat, at a party, with kids, or across a long distance.',
     h1: 'Ideas',
+    linkAll: 'All the ideas',
     standfirst: 'Ways people actually use a hide, beyond playing one round alone on your desk.',
     items: ideas,
     intro:
@@ -85,6 +91,49 @@ const HUBS = [
 ];
 
 const ALL = [...surfaces, ...intent, ...ideas];
+
+/** Old slugs kept alive as canonical stubs.
+ *  The surface pages shipped for about an hour under `hide-a-kamo-on-*` before being renamed
+ *  to phrasing people actually type. Nothing was indexed — Search Console had last read the
+ *  sitemap the day before they existed — so the rename cost nothing, but a link shared in
+ *  that hour should still land somewhere. Each stub carries noindex plus a canonical to the
+ *  new URL and redirects on load. Deletable once the new URLs show up as crawled. */
+const REDIRECTS = {
+  'hide-a-kamo-on-brick': 'camouflage-on-brick',
+  'hide-a-kamo-in-gravel': 'camouflage-on-gravel',
+  'hide-a-kamo-in-grass': 'camouflage-in-grass',
+  'hide-a-kamo-on-wood-grain': 'camouflage-on-wood',
+  'hide-a-kamo-on-carpet': 'camouflage-on-carpet',
+  'hide-a-kamo-on-tiles': 'camouflage-on-tiles',
+  'hide-a-kamo-on-concrete': 'camouflage-on-concrete',
+  'hide-a-kamo-on-tree-bark': 'camouflage-on-tree-bark',
+  'hide-a-kamo-on-fallen-leaves': 'camouflage-in-fallen-leaves',
+  'hide-a-kamo-in-sand': 'camouflage-in-sand',
+  'hide-a-kamo-in-snow': 'camouflage-in-snow',
+  'hide-a-kamo-on-a-bookshelf': 'hide-something-on-a-bookshelf',
+  'hide-a-kamo-on-a-cluttered-desk': 'hide-something-on-a-desk',
+  'hide-a-kamo-on-a-kitchen-counter': 'hide-something-on-a-kitchen-counter',
+  'hide-a-kamo-on-fabric': 'camouflage-on-fabric',
+  'hide-a-kamo-on-asphalt': 'camouflage-on-asphalt',
+  'hide-a-kamo-on-a-white-wall': 'camouflage-on-a-plain-wall',
+  'hide-a-kamo-on-marble': 'camouflage-on-marble',
+};
+
+const renderRedirect = (from, to) => `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="${ORIGIN}/${to}/">
+<meta http-equiv="refresh" content="0; url=/${to}/">
+<title>Moved — KAMO</title>
+</head>
+<body>
+<p>This page moved to <a href="/${to}/">/${to}/</a>.</p>
+</body>
+</html>
+`;
+
 
 function head({ slug, title, description, type = 'article' }) {
   const url = `${ORIGIN}/${slug}/`;
@@ -199,7 +248,7 @@ function related(page, cluster) {
     <h2>Keep reading</h2>
     <ul>
 ${links}
-      <li><a href="/${cluster.slug}/">All of ${esc(cluster.h1.toLowerCase())}</a></li>
+      <li><a href="/${cluster.slug}/">${esc(cluster.linkAll)}</a></li>
     </ul>
   </nav>`;
 }
@@ -293,6 +342,14 @@ const out = new Map();
 for (const cluster of HUBS) {
   out.set(`${cluster.slug}/index.html`, renderHub(cluster));
   for (const page of cluster.items) out.set(`${page.slug}/index.html`, renderPage(page, cluster));
+}
+
+for (const [from, to] of Object.entries(REDIRECTS)) {
+  if (!ALL.some((p) => p.slug === to)) {
+    console.error(`redirect target does not exist: ${to}`);
+    process.exit(1);
+  }
+  out.set(`${from}/index.html`, renderRedirect(from, to));
 }
 
 const urls = [
