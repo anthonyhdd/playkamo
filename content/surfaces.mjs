@@ -10,11 +10,11 @@
  */
 export const surfaces = [
   {
-    slug: 'hide-a-kamo-on-brick',
+    slug: 'camouflage-on-brick',
     linkText: 'Brick wall',
     cardLine: 'A repeating grid of mortar lines — the easiest outline to disappear into.',
-    h1: 'Hiding a kamo on a brick wall',
-    title: 'How to hide a kamo on a brick wall — the mortar line does the work',
+    h1: 'How to camouflage something on a brick wall',
+    title: 'How to camouflage something on a brick wall — the mortar line does the work',
     description:
       'Brick is one of the friendliest surfaces in KAMO: a repeating grid, strong colour variation and ready-made lines to break an outline against. Where to place it and what still gives it away.',
     standfirst: 'Forgiving colour, ready-made lines, and one very common mistake.',
@@ -50,15 +50,15 @@ export const surfaces = [
         a: 'Harder. Paint flattens the colour variation that makes raw brick forgiving, and you are back to matching one exact tone. The mortar lines still help with the outline.',
       },
     ],
-    related: ['hide-a-kamo-on-concrete', 'hide-a-kamo-on-a-white-wall'],
+    related: ['camouflage-on-concrete', 'camouflage-on-a-plain-wall'],
   },
 
   {
-    slug: 'hide-a-kamo-in-gravel',
+    slug: 'camouflage-on-gravel',
     linkText: 'Gravel',
     cardLine: 'Maximum noise. Almost any paint job works — the danger is the shadow.',
-    h1: 'Hiding a kamo in gravel',
-    title: 'How to hide a kamo in gravel — the most forgiving surface there is',
+    h1: 'How to camouflage something on gravel',
+    title: 'How to camouflage something on gravel — the most forgiving surface there is',
     description:
       'Gravel is the easiest surface in KAMO: dense random detail means a rough paint job reads as more stones. The catch is depth — a kamo sitting on top of gravel casts a shadow that no colour fixes.',
     standfirst: 'The most forgiving surface in the game, and the one place colour is not the problem.',
@@ -87,15 +87,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-in-sand', 'hide-a-kamo-on-fallen-leaves'],
+    related: ['camouflage-in-sand', 'camouflage-in-fallen-leaves'],
   },
 
   {
-    slug: 'hide-a-kamo-in-grass',
+    slug: 'camouflage-in-grass',
     linkText: 'Grass',
     cardLine: 'Green everywhere, but the blades run in one direction and your paint should too.',
-    h1: 'Hiding a kamo in grass',
-    title: 'How to hide a kamo in grass — direction matters more than green',
+    h1: 'How to camouflage something in grass',
+    title: 'How to camouflage something in grass — direction matters more than green',
     description:
       'Grass looks like an easy green field and behaves like a directional texture. How to paint with the blades, why mown lawn is harder than long grass, and the shadow that gives a kamo away.',
     standfirst: 'Everyone paints it green. The ones that disappear are painted with the grain.',
@@ -123,15 +123,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-fallen-leaves', 'hide-a-kamo-on-tree-bark'],
+    related: ['camouflage-in-fallen-leaves', 'camouflage-on-tree-bark'],
   },
 
   {
-    slug: 'hide-a-kamo-on-wood-grain',
+    slug: 'camouflage-on-wood',
     linkText: 'Wood grain',
     cardLine: 'A desk or table: strong parallel lines that either swallow the figure or frame it.',
-    h1: 'Hiding a kamo on wood grain',
-    title: 'How to hide a kamo on a wooden desk or table — follow the grain',
+    h1: 'How to camouflage something on a wooden desk or table',
+    title: 'How to camouflage something on wood — follow the grain',
     description:
       'Wood grain is the surface most people try first because it is the one in front of them. It works, but only if the lines you paint continue the lines behind the figure.',
     standfirst: 'The surface everyone tries first, because it is already under the phone.',
@@ -160,15 +160,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-a-cluttered-desk', 'hide-a-kamo-on-a-bookshelf'],
+    related: ['hide-something-on-a-desk', 'hide-something-on-a-bookshelf'],
   },
 
   {
-    slug: 'hide-a-kamo-on-carpet',
+    slug: 'camouflage-on-carpet',
     linkText: 'Carpet & rugs',
     cardLine: 'A patterned rug is a cheat code. A plain one is nearly the hardest surface there is.',
-    h1: 'Hiding a kamo on carpet or a rug',
-    title: 'How to hide a kamo on a rug — patterned is a cheat code, plain is brutal',
+    h1: 'How to camouflage something on carpet or a rug',
+    title: 'How to camouflage something on a rug — patterned is a cheat code, plain is brutal',
     description:
       'Carpet splits into two completely different games. A patterned rug hides almost anything; a plain one is as hard as a bare wall. How to tell which you are on, and what to do about it.',
     standfirst: 'Two surfaces wearing the same name, and they need opposite tactics.',
@@ -198,15 +198,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-a-white-wall', 'hide-a-kamo-on-fabric'],
+    related: ['camouflage-on-a-plain-wall', 'camouflage-on-fabric'],
   },
 
   {
-    slug: 'hide-a-kamo-on-tiles',
+    slug: 'camouflage-on-tiles',
     linkText: 'Tiles',
     cardLine: 'A hard grid with grout lines — great for outlines, punishing for colour.',
-    h1: 'Hiding a kamo on tiles',
-    title: 'How to hide a kamo on tiles — great lines, unforgiving colour',
+    h1: 'How to camouflage something on tiles',
+    title: 'How to camouflage something on tiles — great lines, unforgiving colour',
     description:
       'Bathroom and kitchen tiles give you a perfect grid to break an outline against, and a flat uniform colour that punishes any error. How to play the grout instead of the tile.',
     standfirst: 'Play the grout, not the tile.',
@@ -235,15 +235,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-a-kitchen-counter', 'hide-a-kamo-on-a-white-wall'],
+    related: ['hide-something-on-a-kitchen-counter', 'camouflage-on-a-plain-wall'],
   },
 
   {
-    slug: 'hide-a-kamo-on-concrete',
+    slug: 'camouflage-on-concrete',
     linkText: 'Concrete',
     cardLine: 'Looks plain, is not: every stain, crack and pour line is a place to hide.',
-    h1: 'Hiding a kamo on concrete',
-    title: 'How to hide a kamo on concrete — hunt for the stains',
+    h1: 'How to camouflage something on concrete',
+    title: 'How to camouflage something on concrete — hunt for the stains',
     description:
       'Concrete reads as a flat grey field, which makes it look hard. In practice it is covered in stains, cracks and pour lines, and every one of them is somewhere to hide a kamo.',
     standfirst: 'Reads as a flat grey field. It is nothing of the kind — look closer.',
@@ -274,15 +274,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-asphalt', 'hide-a-kamo-on-brick'],
+    related: ['camouflage-on-asphalt', 'camouflage-on-brick'],
   },
 
   {
-    slug: 'hide-a-kamo-on-tree-bark',
+    slug: 'camouflage-on-tree-bark',
     linkText: 'Tree bark',
     cardLine: 'Deep vertical ridges and real shadow. The best outdoor surface for a beginner.',
-    h1: 'Hiding a kamo on tree bark',
-    title: 'How to hide a kamo on tree bark — deep ridges do half the work',
+    h1: 'How to camouflage something on tree bark',
+    title: 'How to camouflage something on tree bark — deep ridges do half the work',
     description:
       'Bark has what most surfaces lack: real depth. The ridges cast their own shadows, which means a kamo tucked into one is half hidden before you paint anything.',
     standfirst: 'The one surface that comes with its own shadows built in.',
@@ -311,15 +311,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-fallen-leaves', 'hide-a-kamo-in-grass'],
+    related: ['camouflage-in-fallen-leaves', 'camouflage-in-grass'],
   },
 
   {
-    slug: 'hide-a-kamo-on-fallen-leaves',
+    slug: 'camouflage-in-fallen-leaves',
     linkText: 'Fallen leaves',
     cardLine: 'Chaos in three colours. Easy to blend, easy to overdo.',
-    h1: 'Hiding a kamo on fallen leaves',
-    title: 'How to hide a kamo in fallen leaves — chaos with a scale problem',
+    h1: 'How to camouflage something in fallen leaves',
+    title: 'How to camouflage something in fallen leaves — chaos with a scale problem',
     description:
       'Leaf litter is one of the most forgiving surfaces in KAMO, as long as the marks you paint are the same size as the leaves. Get the scale wrong and it stands out in a field of noise.',
     standfirst: 'Forgiving on colour, unforgiving on scale.',
@@ -348,15 +348,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-tree-bark', 'hide-a-kamo-in-gravel'],
+    related: ['camouflage-on-tree-bark', 'camouflage-on-gravel'],
   },
 
   {
-    slug: 'hide-a-kamo-in-sand',
+    slug: 'camouflage-in-sand',
     linkText: 'Sand',
     cardLine: 'Almost one colour, but ripples and footprints give you the lines you need.',
-    h1: 'Hiding a kamo in sand',
-    title: 'How to hide a kamo in sand — ripples beat colour',
+    h1: 'How to camouflage something in sand',
+    title: 'How to camouflage something in sand — ripples beat colour',
     description:
       'Sand is close to a single colour, which makes it look easy and play hard. The ripples, footprints and damp patches are what actually hide a kamo on a beach.',
     standfirst: 'Looks like the easiest surface on the beach. It is the one that punishes flat light.',
@@ -386,15 +386,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-in-gravel', 'hide-a-kamo-in-snow'],
+    related: ['camouflage-on-gravel', 'camouflage-in-snow'],
   },
 
   {
-    slug: 'hide-a-kamo-in-snow',
+    slug: 'camouflage-in-snow',
     linkText: 'Snow',
     cardLine: 'The brightest surface in the game — and the one where shadows are blue, not grey.',
-    h1: 'Hiding a kamo in snow',
-    title: 'How to hide a kamo in snow — the shadows are blue',
+    h1: 'How to camouflage something in snow',
+    title: 'How to camouflage something in snow — the shadows are blue',
     description:
       'Snow is the brightest, flattest surface you can point a phone at, and the one where the usual grey-shadow instinct is wrong. What to paint, and why fresh snow is harder than old.',
     standfirst: 'Bright, flat, and full of a colour most people forget to paint.',
@@ -423,15 +423,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-in-sand', 'hide-a-kamo-on-a-white-wall'],
+    related: ['camouflage-in-sand', 'camouflage-on-a-plain-wall'],
   },
 
   {
-    slug: 'hide-a-kamo-on-a-bookshelf',
+    slug: 'hide-something-on-a-bookshelf',
     linkText: 'Bookshelf',
     cardLine: 'Vertical bands of colour and real shadow between the spines.',
-    h1: 'Hiding a kamo on a bookshelf',
-    title: 'How to hide a kamo on a bookshelf — live in the gap between spines',
+    h1: 'Where to hide something on a bookshelf',
+    title: 'Where to hide something on a bookshelf — live in the gap between spines',
     description:
       'A shelf of books is a row of hard vertical colour bands with dark gaps between them. It is one of the best indoor surfaces, if you stop trying to match a single spine.',
     standfirst: 'One of the best surfaces in the house, and it is already behind you.',
@@ -460,15 +460,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-a-cluttered-desk', 'hide-a-kamo-on-wood-grain'],
+    related: ['hide-something-on-a-desk', 'camouflage-on-wood'],
   },
 
   {
-    slug: 'hide-a-kamo-on-a-cluttered-desk',
+    slug: 'hide-something-on-a-desk',
     linkText: 'A cluttered desk',
     cardLine: 'Where most first rounds happen. Clutter helps, but only the right kind.',
-    h1: 'Hiding a kamo on a cluttered desk',
-    title: 'How to hide a kamo on a messy desk — clutter is not automatically camouflage',
+    h1: 'Where to hide something on a cluttered desk',
+    title: 'Where to hide something on a messy desk — clutter is not automatically camouflage',
     description:
       'The desk is where most first rounds happen. Clutter helps, but only when it gives you overlap and shadow — a tidy desk with three objects on it is harder than a bare wall.',
     standfirst: 'Where nearly every first round happens, and where the results are wildly inconsistent.',
@@ -497,15 +497,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-wood-grain', 'hide-a-kamo-on-a-bookshelf'],
+    related: ['camouflage-on-wood', 'hide-something-on-a-bookshelf'],
   },
 
   {
-    slug: 'hide-a-kamo-on-a-kitchen-counter',
+    slug: 'hide-something-on-a-kitchen-counter',
     linkText: 'Kitchen counter',
     cardLine: 'Speckled worktops are ideal. Anything glossy is a trap.',
-    h1: 'Hiding a kamo on a kitchen counter',
-    title: 'How to hide a kamo on a kitchen worktop — speckle good, gloss bad',
+    h1: 'Where to hide something on a kitchen counter',
+    title: 'Where to hide something on a kitchen worktop — speckle good, gloss bad',
     description:
       'Kitchen worktops split cleanly: a speckled granite-effect surface is one of the best indoor hides, and a glossy white one is among the worst. How to tell and what to do.',
     standfirst: 'The material decides the round before you touch anything.',
@@ -534,15 +534,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-tiles', 'hide-a-kamo-on-a-cluttered-desk'],
+    related: ['camouflage-on-tiles', 'hide-something-on-a-desk'],
   },
 
   {
-    slug: 'hide-a-kamo-on-fabric',
+    slug: 'camouflage-on-fabric',
     linkText: 'Fabric & denim',
     cardLine: 'Folds create their own shadows — the best of them beat any paint job.',
-    h1: 'Hiding a kamo on fabric',
-    title: 'How to hide a kamo on fabric — the folds do the hiding',
+    h1: 'How to camouflage something on fabric',
+    title: 'How to camouflage something on fabric — the folds do the hiding',
     description:
       'Denim, a sofa, a duvet: fabric hides a kamo through its folds rather than its colour. Where to place the figure, and why a stretched flat sheet is much harder than a rumpled one.',
     standfirst: 'Colour barely matters here. Geometry does.',
@@ -572,15 +572,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-carpet', 'hide-a-kamo-on-a-cluttered-desk'],
+    related: ['camouflage-on-carpet', 'hide-something-on-a-desk'],
   },
 
   {
-    slug: 'hide-a-kamo-on-asphalt',
+    slug: 'camouflage-on-asphalt',
     linkText: 'Asphalt & road',
     cardLine: 'Coarse aggregate, oil marks and paint lines. Better than it looks.',
-    h1: 'Hiding a kamo on asphalt',
-    title: 'How to hide a kamo on asphalt — coarser than concrete, and kinder',
+    h1: 'How to camouflage something on asphalt',
+    title: 'How to camouflage something on asphalt — coarser than concrete, and kinder',
     description:
       'Road surface looks like flat black and behaves like coarse gravel glued in place: aggregate, oil stains, tyre polish and paint lines all give you somewhere to hide a kamo.',
     standfirst: 'Reads as flat black. Up close it is coarse gravel that stopped moving.',
@@ -611,15 +611,15 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-concrete', 'hide-a-kamo-in-gravel'],
+    related: ['camouflage-on-concrete', 'camouflage-on-gravel'],
   },
 
   {
-    slug: 'hide-a-kamo-on-a-white-wall',
+    slug: 'camouflage-on-a-plain-wall',
     linkText: 'A plain white wall',
     cardLine: 'Hard mode. One tone, no lines, nowhere to hide — read this before you try.',
-    h1: 'Hiding a kamo on a plain white wall',
-    title: 'How to hide a kamo on a plain wall — the hardest surface in the game',
+    h1: 'How to camouflage something on a plain wall',
+    title: 'How to camouflage something on a plain wall — the hardest surface there is',
     description:
       'A flat evenly-lit wall gives you no texture, no lines and no shadow. It is the hardest surface in KAMO. If you insist on trying, here is the only way it works.',
     standfirst: 'The hardest surface in the game. This page is mostly about why.',
@@ -655,15 +655,15 @@ export const surfaces = [
         a: 'Textured ones. Woodchip, rough render, exposed plaster and old brick that has been painted all keep some surface relief, which is enough to be sloppy inside. It is the smooth modern emulsion that is brutal.',
       },
     ],
-    related: ['hide-a-kamo-on-brick', 'hide-a-kamo-on-carpet'],
+    related: ['camouflage-on-brick', 'camouflage-on-carpet'],
   },
 
   {
-    slug: 'hide-a-kamo-on-marble',
+    slug: 'camouflage-on-marble',
     linkText: 'Marble',
     cardLine: 'Veins are lines you did not have to draw. Follow them exactly.',
-    h1: 'Hiding a kamo on marble',
-    title: 'How to hide a kamo on marble — the veins are the whole trick',
+    h1: 'How to camouflage something on marble',
+    title: 'How to camouflage something on marble — the veins are the whole trick',
     description:
       'Marble gives you dramatic dark veins running through a pale field: the strongest lines of any smooth surface. Continue them across the figure and it disappears; break one and it is over.',
     standfirst: 'The strongest lines you will find on a smooth surface — and they must line up.',
@@ -691,6 +691,6 @@ export const surfaces = [
         ],
       },
     ],
-    related: ['hide-a-kamo-on-a-kitchen-counter', 'hide-a-kamo-on-tiles'],
+    related: ['hide-something-on-a-kitchen-counter', 'camouflage-on-tiles'],
   },
 ];
