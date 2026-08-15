@@ -1,0 +1,35 @@
+/* Styles for generated pages, on top of doc.css.
+   Kept separate so the three hand-written document pages (/privacy/, /terms/, /support/)
+   never inherit a hub card or a "keep reading" block they have no markup for. */
+
+.eyebrow{margin:0 0 var(--s1); font-size:13px; letter-spacing:.5px; text-transform:uppercase}
+.eyebrow a{color:var(--mint); text-decoration:none}
+.eyebrow a:hover{text-decoration:underline}
+
+.prose h3{margin-top:var(--s4)}
+.prose ul{margin-bottom:var(--s3)}
+
+/* Hub index. Cards rather than a bare <ul>: a hub with eighteen link-coloured lines reads as
+   a sitemap, and nobody clicks a sitemap. The one-line description is what makes it a menu. */
+.cards{list-style:none; margin:var(--s4) 0 0; padding:0; display:grid; gap:var(--s2)}
+.cards a{display:block; padding:var(--s2) var(--s3); border:1px solid var(--stroke);
+         border-radius:14px; text-decoration:none; color:inherit; transition:border-color .15s}
+.cards a:hover{border-color:rgba(95,230,164,.45)}
+.cards a:focus-visible{outline:3px solid var(--mint); outline-offset:2px}
+.card-t{display:block; font-family:var(--display); font-weight:700; font-size:17px; color:var(--text)}
+.card-d{display:block; margin-top:2px; color:var(--dim); font-size:15px; line-height:1.5}
+@media (min-width:620px){ .cards{grid-template-columns:1fr 1fr} }
+
+/* Related links. An orphan page is a page Google crawls once and forgets. */
+.related{margin-top:var(--s5); padding-top:var(--s3); border-top:1px solid var(--stroke)}
+.related h2{font-size:16px; margin:0 0 var(--s2); color:var(--dim); font-weight:700;
+            letter-spacing:.3px; text-transform:uppercase}
+.related ul{list-style:none; margin:0; padding:0; display:grid; gap:var(--s1)}
+.related a{color:var(--mint); text-decoration:none}
+.related a:hover{text-decoration:underline}
+
+.endcta{text-align:center; margin-top:var(--s5); padding-top:var(--s5);
+        border-top:1px solid var(--stroke)}
+.endcta p{color:var(--dim); margin:0 0 var(--s3)}
+.cta.big{height:56px; padding:0 32px; font-size:18px; border-radius:15px}
+.cta.big svg{width:18px; height:18px}
