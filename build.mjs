@@ -26,6 +26,34 @@ import { ideas } from './content/ideas.mjs';
 
 const ORIGIN = 'https://playkamo.com';
 const APP = 'https://apps.apple.com/app/id6789639784';
+
+/* EVERY INSTALL BUTTON ON THIS SITE IS TRACKED, AND UNTIL NOW NONE OF THEM WAS.
+ *
+ * 42 pages, one bare listing URL on all of them. So an install earned by a search for
+ * "games like meccha chameleon" and an install earned by a TikTok ad arrived at AppsFlyer
+ * looking identical — the first as `af_status: Organic` with nothing attached. That is not a
+ * reporting nicety: this site's whole job is organic installs, and without a `c` there is no
+ * way to tell which of these pages produces any. Ranking is not the metric; installs are, and
+ * they were unreadable.
+ *
+ * `pid=seo` separates the site from the in-app share (`user_referral`), the challenge link
+ * (`challenge_link`, see kamo/infra/edge-h.ts) and the YouTube fleet. `c` is the page's own
+ * slug, so the answer to "which content is worth writing more of" is a campaign breakdown
+ * rather than an argument. The rule this repeals is stated in one line in
+ * ~/SPANISH/content-engine/config.json: never hardcode a bare apps.apple.com URL, it is
+ * untracked and it outranks the tracked link.
+ *
+ * The base is the template kamo-app ships (attribution.js ONELINK_URL). A second template
+ * exists for YouTube — getkamo.onelink.me/0Dmw — and they are not interchangeable in
+ * reporting; do not unify them without checking what reads each.
+ *
+ * ⚠️ SCHEMA.ORG KEEPS THE BARE URL. `downloadUrl` and `sameAs` in the JSON-LD name the App
+ * Store listing as an identity, not as a click target — pointing structured data at a
+ * redirector is how an app loses its rich result. Buttons get the OneLink; the graph does
+ * not. */
+const ONELINK = 'https://kamo.onelink.me/dc9X';
+const appLink = (slug) =>
+  `${ONELINK}?pid=seo&c=${encodeURIComponent(slug ? String(slug).replace(/^\/+|\/+$/g, '') : 'site')}`;
 const LASTMOD = '2026-08-15';
 const CHECK = process.argv.includes('--check');
 
@@ -166,10 +194,10 @@ function head({ slug, title, description, type = 'article' }) {
 <link rel="stylesheet" href="/page.css">`;
 }
 
-const chrome = (body) => `<header>
+const chrome = (body, slug) => `<header>
   <div class="wrap nav">
     <a class="brand" href="/">KAMO</a>
-    <a class="cta" href="${APP}">${APPLE_SVG} Get KAMO</a>
+    <a class="cta" href="${appLink(slug)}">${APPLE_SVG} Get KAMO</a>
   </div>
 </header>
 
@@ -193,9 +221,9 @@ ${body}
   </div>
 </footer>`;
 
-const endCta = (line = 'Free on iPhone. No signup.') => `  <div class="endcta">
+const endCta = (line = 'Free on iPhone. No signup.', slug) => `  <div class="endcta">
     <p>${esc(line)}</p>
-    <a class="cta big" href="${APP}">${APPLE_SVG} Get KAMO</a>
+    <a class="cta big" href="${appLink(slug)}">${APPLE_SVG} Get KAMO</a>
   </div>`;
 
 function sections(list) {
@@ -271,7 +299,7 @@ ${faqBlock(page.faq)}
 
 ${related(page, cluster)}
 
-${endCta(page.ctaLine)}
+${endCta(page.ctaLine, page.slug)}
 </article>`;
   return `<!doctype html>
 <html lang="en">
@@ -280,7 +308,7 @@ ${head({ slug: page.slug, title: page.title, description: page.description })}
 </head>
 <body>
 
-${chrome(body)}
+${chrome(body, page.slug)}
 ${faqSchema(page.faq, url)}
 </body>
 </html>
@@ -308,7 +336,7 @@ function renderHub(cluster) {
 ${cards}
   </ul>
 
-${endCta()}
+${endCta(undefined, cluster.slug)}
 </article>`;
   return `<!doctype html>
 <html lang="en">
@@ -317,7 +345,7 @@ ${head({ slug: cluster.slug, title: cluster.title, description: cluster.descript
 </head>
 <body>
 
-${chrome(body)}
+${chrome(body, cluster.slug)}
 </body>
 </html>
 `;
